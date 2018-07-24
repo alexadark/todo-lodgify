@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export const Todo = ({ text, onClickDelete }) => {
+const Todo = ({ text, onClickDelete }) => {
   return (
     <div className="todo-item">
       {text}
@@ -9,4 +9,6 @@ export const Todo = ({ text, onClickDelete }) => {
     </div>
   );
 }
+
+export default Todo;
 

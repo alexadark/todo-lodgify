@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { uniqueId } from 'lodash';
 
 import { Todo } from '/';
+import Input from './Input';
 
 export class App extends Component {
 
@@ -32,7 +33,7 @@ export class App extends Component {
 
   render() {
    
-    const { todo, todos, comment } = this.state;
+    const {todos, comment } = this.state;
     return (
       <div className="todo-list">
         <h1>todos</h1>
@@ -47,14 +48,10 @@ export class App extends Component {
               : comment
           }
         </div>
-        <div className="todo-input">
-          <input 
-          onChange={this.handleChange} 
-          placeholder="..." 
-          type="text" 
-          value={todo}/>
-          <button onClick={this.handleClickAdd}>Add</button>
-        </div>
+      <Input
+      onWriteTask={this.handleChange}
+      onClickAdd={this.handleClickAdd}
+      />
       </div>
     )
   }

@@ -6,6 +6,7 @@ import { Todo } from './Todo';
 export class App extends Component {
 
   state = {
+    comment: 'Add your first todo',
     todo: '',
     todos: []
   }
@@ -26,11 +27,12 @@ export class App extends Component {
       ...todos.slice(0, index),
       ...todos.slice(index + 1)
     ]});
+    todos.length === 1 && this.setState({ comment: 'You\'re all done 🌴' })
   }
 
   render() {
    
-    const { todo, todos } = this.state;
+    const { todo, todos, comment } = this.state;
     return (
       <div className="todo-list">
         <h1>todos</h1>
@@ -42,7 +44,7 @@ export class App extends Component {
               <Todo key={todo.id} 
               onClickDelete={() => this.handleClickDelete(index)} 
               text={todo.text} />)
-              : 'You\'re all done 🌴'
+              : comment
           }
         </div>
         <div className="todo-input">

@@ -7,14 +7,17 @@ export class App extends Component {
 
   state = {
     todo: '',
-    todos: [ { text: 'Add your first todo' } ]
+    todos: []
   }
 
   handleChange = event => this.setState({ todo: event.target.value });
 
   handleClickAdd = () => {
     const { todo, todos } = this.state;
-    todo && this.setState({ todos: [ ...todos, { text: todo } ] });
+    todo && this.setState({
+      todos: [...todos, { text: todo, id: uniqueId() }],
+      todo: ''
+    });
   };
 
   handleClickDelete = index => {
@@ -26,9 +29,7 @@ export class App extends Component {
   }
 
   render() {
-    this.state.todos.forEach((todo, index) => {
-      this.state.todos[index] = { ...todo, id: uniqueId() };
-    });
+   
     const { todo, todos } = this.state;
     return (
       <div className="todo-list">
